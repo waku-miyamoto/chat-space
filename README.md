@@ -15,8 +15,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
-|email|string|
+|name|string|null :false|
+|email|string|null :false|
 
 ### Association
 - has_many :users_groups
@@ -27,7 +27,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
+|name|string|null :false|
 
 ### Association
 - has_many :messages
