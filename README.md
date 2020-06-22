@@ -17,21 +17,22 @@
 |------|----|-------|
 |name|string|
 |email|string|
-|password|string|
 
 ### Association
-- has_many :groups
+- has_many :users_groups
 - has_many :messages
+- has_many :groups, through: :users_groups
 
 ## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|title|string|
+|name|string|
 
 ### Association
-- has_many :massages
+- has_many :messages
 - has_many :users_groups
+- has_many :users, through: :users_groups
 
 ## messagesテーブル
 
@@ -39,8 +40,8 @@
 |------|----|-------|
 |body|text|
 |image|string|
-|group_id|integer|
-|user_id|integer|
+|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
