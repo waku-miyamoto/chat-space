@@ -1,0 +1,38 @@
+.chat-main
+  .chat-main__header
+    .chat-main__header__groupinfo
+      .chat-main__header__groupinfo__groupname
+        映画
+      %ul.chat-main__header__groupinfo__memberlist
+        Member :
+        %li.member
+          waku
+    = link_to "#", class: "edit-btn" do
+      Edit
+  .chat-main__chatspace
+    .chat-main__chatspace__info
+      .chat-main__chatspace__info__name
+        waku
+      .chat-main__chatspace__info__date
+        2020/6/24(wed)12:24
+    .chat-main__chatspace__message
+      おはよう！
+    .chat-main__chatspace__info
+      .chat-main__chatspace__info__name
+        waku
+      .chat-main__chatspace__info__date
+        2020/6/24(wed)12:24
+    .chat-main__chatspace__message
+      おはよう！
+
+  .chat-main__form
+    %form.send-message
+      .post__message
+        %input{type: "text", class: "post__message__text", placeholder: "message"}
+        %label{class: "post__message__image"}
+          = icon('fas', 'image')
+          %input{type: "file", class: "post__message__file"}
+      %input{type: "submit", class: "submit-btn", value: "SEND"}
+  
+
+
