@@ -4,20 +4,15 @@
       .side-bar__header__userinfo__name
         = current_user.name
       .side-bar__header__userinfo__btn
-        = link_to "#", class: "userinfo-btn-edit" do
+        = link_to new_group_path(current_user), class: "userinfo-btn-edit" do
           = icon('fas', 'edit')
         = link_to edit_user_path(current_user), class: "userinfo-btn-cog" do
           = icon('fas', 'cog')  
   .side-bar__groups
-    .side-bar__groups__name
-      映画
-    .side-bar__groups__message
-      まだメッセージがありません  
-    .side-bar__groups__name
-      漫画
-    .side-bar__groups__message
-      まだメッセージがありません
-    .side-bar__groups__name
-      ドラマ
-    .side-bar__groups__message
-      まだメッセージがありません
+    - current_user.groups.each do |group|
+      .side-bar__groups__group
+        = link_to '#' do
+          .side-bar__groups__group__name
+            = group.name
+          .side-bar__groups__group__message
+            メッセージはまだありません
