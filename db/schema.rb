@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_24_092212) do
+ActiveRecord::Schema.define(version: 2020_06_22_065457) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_groups_on_name", unique: true
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -43,10 +43,14 @@ ActiveRecord::Schema.define(version: 2020_06_24_092212) do
   end
 
   create_table "users_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
+    t.bigint "group_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_users_groups_on_group_id"
+    t.index ["user_id"], name: "index_users_groups_on_user_id"
   end
 
+  add_foreign_key "users_groups", "groups"
+  add_foreign_key "users_groups", "users"
 end
