@@ -2,11 +2,11 @@
   .side-bar__header
     .side-bar__header__userinfo
       .side-bar__header__userinfo__name
-        waku
+        = current_user.name
       .side-bar__header__userinfo__btn
         = link_to "#", class: "userinfo-btn-edit" do
           = icon('fas', 'edit')
-        = link_to "#", class: "userinfo-btn-cog" do
+        = link_to edit_user_path(current_user), class: "userinfo-btn-cog" do
           = icon('fas', 'cog')  
   .side-bar__groups
     .side-bar__groups__name
