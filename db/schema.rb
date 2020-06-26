@@ -20,12 +20,14 @@ ActiveRecord::Schema.define(version: 2020_06_22_065457) do
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "body"
+    t.string "body"
     t.string "image"
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "group_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_messages_on_group_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -51,6 +53,8 @@ ActiveRecord::Schema.define(version: 2020_06_22_065457) do
     t.index ["user_id"], name: "index_users_groups_on_user_id"
   end
 
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
   add_foreign_key "users_groups", "groups"
   add_foreign_key "users_groups", "users"
 end

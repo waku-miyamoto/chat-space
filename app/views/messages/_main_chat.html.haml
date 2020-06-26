@@ -2,37 +2,28 @@
   .chat-main__header
     .chat-main__header__groupinfo
       .chat-main__header__groupinfo__groupname
-        映画
-      %ul.chat-main__header__groupinfo__memberlist
-        Member :
-        %li.member
-          waku
-    = link_to "#", class: "edit-btn" do
+        = @group.name
+      .chat-main__header__groupinfo__memberlist
+        Member : 
+        %ul
+          - @group.users.each do |user|
+            %li= user.name
+          
+    = link_to edit_group_path(current_user), class: "edit-btn" do
       Edit
   .chat-main__chatspace
-    .chat-main__chatspace__info
-      .chat-main__chatspace__info__name
-        waku
-      .chat-main__chatspace__info__date
-        2020/6/24(wed)12:24
-    .chat-main__chatspace__message
-      おはよう！
-    .chat-main__chatspace__info
-      .chat-main__chatspace__info__name
-        waku
-      .chat-main__chatspace__info__date
-        2020/6/24(wed)12:24
-    .chat-main__chatspace__message
-      おはよう！
+    = render @messages
+    
 
   .chat-main__form
-    %form.send-message
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
       .post__message
-        %input{type: "text", class: "post__message__text", placeholder: "message"}
-        %label{class: "post__message__image"}
+        = f.text_field :body, class: 'post__message__text', placeholder: 'type a message'
+        = f.label :image, class: 'post__message__image' do
           = icon('fas', 'image')
-          %input{type: "file", class: "post__message__file"}
-      %input{type: "submit", class: "submit-btn", value: "SEND"}
+          = f.file_field :image, class: 'post__message__file'
+      = f.submit 'Send', class: 'submit-btn'
+      
   
 
 
