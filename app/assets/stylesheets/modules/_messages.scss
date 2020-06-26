@@ -50,7 +50,10 @@
       &__name{
         font-size: 15px;
         margin-bottom: 5px;
-      
+      }
+      a {
+        color: #ffffff;
+        text-decoration: none;
       }
       &__message{
         font-size: 11px;
@@ -82,7 +85,10 @@
           display: flex;
           list-style: none;
           margin-top: 15px;
-        .member{
+        ul{
+          display: flex;
+        }
+          li{
           margin-left: 5px;
         }
       }
@@ -104,6 +110,7 @@
    background-color: #fafafa;
    padding-left: 40px;
    padding-top: 35px;
+   overflow: scroll;
    &__info{
      display: flex;
      margin-bottom: 12px;
@@ -118,12 +125,11 @@
       padding-left: 5px;
      }
    }
-   &__message{
-     margin-bottom: 46px;
-     font-size: 14px;
-     color: #434a54;
-
-   }
+     .message{
+       margin-bottom: 46px;
+       font-size: 14px;
+       color: #434a54;
+     }
   }
   &__form{
     background-color: #d2d2d2;
