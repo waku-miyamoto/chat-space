@@ -103,7 +103,6 @@
       height: 40px;
       margin-top: 28px;
     }
-    
   }
   &__chatspace{
    height: calc(100vh - 100px - 90px);
@@ -111,24 +110,29 @@
    padding-left: 40px;
    padding-top: 35px;
    overflow: scroll;
-   &__info{
-     display: flex;
-     margin-bottom: 12px;
-     &__name{
-      color: #333333;
-      font-size: 16px;
-      font-weight: bold;
+   &__field{
+     &__info{
+       display: flex;
+       margin-bottom: 12px;
+       &__name{
+        color: #333333;
+        font-size: 16px;
+        font-weight: bold;
+       }
+       &__date{
+        color: #999999;
+        font-size: 12px;
+        padding-left: 5px;
+      }
      }
-     &__date{
-      color: #999999;
-      font-size: 12px;
-      padding-left: 5px;
-     }
-   }
+    }
      .message{
        margin-bottom: 46px;
        font-size: 14px;
        color: #434a54;
+       .Message__image{
+         height: 300px;
+       }
      }
   }
   &__form{
