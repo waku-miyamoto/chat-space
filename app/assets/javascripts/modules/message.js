@@ -1,9 +1,11 @@
 $(function(){
+    
   function buildHTML(message){
     // 「もしメッセージに画像が含まれていたら」という条件式
     if (message.image) {
       let html =  
-      `<div class="chat-main__chatspace__field">
+      `
+      <div class="chat-main__chatspace__field" data-message-id=${message.id}>
         <div class="chat-main__chatspace__field__info">
           <div class="chat-main__chatspace__field__info__name">
             ${message.user_name}
@@ -22,7 +24,8 @@ $(function(){
   return html;
     } else {
       let html = 
-      `<div class="chat-main__chatspace__field">
+      `
+      <div class="chat-main__chatspace__field" data-message-id=${message.id}>
         <div class="chat-main__chatspace__field__info">
           <div class="chat-main__chatspace__field__info__name">
             ${message.user_name}
@@ -61,7 +64,8 @@ $(function(){
     $('.submit-btn').prop("disabled", false);
   })
   .fail(function() {
-    alert("送信に失敗しました")
-  })
+    alert("送信に失敗しました");
+    $('.Form__submit').prop("disabled", false);
+    });
   });
 });
